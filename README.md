@@ -5,6 +5,10 @@ Based on:
 - [ROS-melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
 - [Unreal Engine docker image with CUDA, VirtualGL and Vulkan](https://github.com/adamrehn/ue4-runtime)
 
+## ROSbags
+
+[Here](https://drive.google.com/drive/folders/1OaCN3RxvAE9yoHSsxjsCoKGlrzd3ZJm9?usp=sharing) are the rosbag files with a recording of the ride on two different routes.
+
 ## Requirements
 
 ### Hardware
