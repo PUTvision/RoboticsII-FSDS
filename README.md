@@ -86,7 +86,7 @@ docker run \
     - control using gamepad:  
         `roslaunch joystick joystick.launch`
 
-* topics:
+* [topics](https://fs-driverless.github.io/Formula-Student-Driverless-Simulator/latest/ros-bridge/):
     ```bash
     $ rostopic list 
     /fsds/camera/cam1
