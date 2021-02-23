@@ -42,7 +42,7 @@ docker build -t putm-fsds -f Dockerfile .
 2. Add docker access to nvidia (it's require sudo privileges to execute)
 
 ```bash
-. ./xauth.sh
+./xauth.sh
 ```
 
 3. Run docker image
@@ -81,8 +81,10 @@ docker run \
     - start window with sensors plots:  
         `roslaunch fsds_ros_bridge plot.launch`  
         ![sim](imgs/plots.png)
-    - example control script:  
+    - example control script with ROS and python:  
         `roslaunch examples sinewave.launch`
+    - example control script with python client and lidar scan:
+        `python3 python/examples/autonomous_example.py`
     - control using gamepad:  
         `roslaunch joystick joystick.launch`
 
@@ -95,8 +97,7 @@ docker run \
     /fsds/gps
     /fsds/gss
     /fsds/imu
-    /fsds/lidar/Lidar1
-    /fsds/lidar/Lidar2
+    /fsds/lidar/Lidar
     /fsds/signal/finished
     /fsds/signal/go
     /fsds/testing_only/extra_info
@@ -105,6 +106,10 @@ docker run \
     /rosout
     /rosout_agg
     /tf_static
+    ```
+* services:
+    ```bash
+    /fsds/reset
     ```
 
 ## Errors

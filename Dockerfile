@@ -18,7 +18,7 @@ RUN apt install -y tzdata
 
 # install AirSim requirements
 RUN apt-get update
-RUN apt-get install \
+RUN apt-get install -y --no-install-recommends \
 	python3 \
 	python3-pip \
 	sudo \
@@ -27,8 +27,12 @@ RUN apt-get install \
 	pulseaudio \
 	sudo \
 	x11-xserver-utils \
-	-y --no-install-recommends \
-    git wget rsync unzip g++
+	git \
+    wget \
+	rsync \
+	unzip \
+	g++ \
+	vim
 
 # install missing tool
 RUN apt-get update
@@ -39,6 +43,7 @@ RUN pip3 install setuptools wheel
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
+RUN pip3 install matplotlib
 
 # create not-sudo account
 USER ue4
@@ -65,6 +70,9 @@ RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN git clone https://github.com/FS-Driverless/Formula-Student-Driverless-Simulator.git --recurse-submodules
 
 WORKDIR /home/ue4/Formula-Student-Driverless-Simulator
+
+ADD ./settings.json settings.json
+ADD ./default.rviz ros/src/fsds_ros_bridge/rviz/default.rviz
 
 # build FSDS
 RUN cd AirSim && \
