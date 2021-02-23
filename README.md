@@ -42,7 +42,7 @@ docker build -t putm-fsds -f Dockerfile .
 2. Add docker access to nvidia (it's require sudo privileges to execute)
 
 ```bash
-./xauth.sh
+. ./xauth.sh
 ```
 
 3. Run docker image
