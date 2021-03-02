@@ -5,6 +5,10 @@ Based on:
 - [ROS-melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
 - [Unreal Engine docker image with CUDA, VirtualGL and Vulkan](https://github.com/adamrehn/ue4-runtime)
 
+## ROSbags
+
+[Here](https://drive.google.com/drive/folders/1OaCN3RxvAE9yoHSsxjsCoKGlrzd3ZJm9?usp=sharing) are the rosbag files with a recording of the ride on two different routes.
+
 ## Requirements
 
 ### Hardware
@@ -29,6 +33,13 @@ Based on:
 
 ## Instalation
 
+0. Clone repository
+
+```bash
+git clone https://github.com/PUT-Motorsport/PUTM_DV_Simulator_2020.git
+cd PUTM_DV_Simulator_2020
+```
+
 1. Build docker image (on testing machine build time is 13m9,531s)
 
 ```bash
@@ -38,6 +49,7 @@ docker build -t putm-fsds -f Dockerfile .
 2. Add docker access to nvidia (it's require sudo privileges to execute)
 
 ```bash
+chmod +x xauth.sh
 ./xauth.sh
 ```
 
@@ -83,12 +95,14 @@ docker run \
     - start window with sensors plots:  
         `roslaunch fsds_ros_bridge plot.launch`  
         ![sim](imgs/plots.png)
-    - example control script:  
+    - example control script with ROS and python:  
         `roslaunch examples sinewave.launch`
+    - example control script with python client and lidar scan:
+        `python3 python/examples/autonomous_example.py`
     - control using gamepad:  
         `roslaunch joystick joystick.launch`
 
-* topics:
+* [topics](https://fs-driverless.github.io/Formula-Student-Driverless-Simulator/latest/ros-bridge/):
     ```bash
     $ rostopic list 
     /fsds/camera/cam1
@@ -97,8 +111,7 @@ docker run \
     /fsds/gps
     /fsds/gss
     /fsds/imu
-    /fsds/lidar/Lidar1
-    /fsds/lidar/Lidar2
+    /fsds/lidar/Lidar
     /fsds/signal/finished
     /fsds/signal/go
     /fsds/testing_only/extra_info
@@ -107,6 +120,10 @@ docker run \
     /rosout
     /rosout_agg
     /tf_static
+    ```
+* services:
+    ```bash
+    /fsds/reset
     ```
 
 ## Errors
