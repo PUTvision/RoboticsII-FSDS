@@ -28,7 +28,7 @@ RUN apt-get install \
 	sudo \
 	x11-xserver-utils \
 	-y --no-install-recommends \
-    git wget rsync unzip g++
+    git wget rsync unzip g++ vim nano
 
 # install missing tool
 RUN apt-get update
