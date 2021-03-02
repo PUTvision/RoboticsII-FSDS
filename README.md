@@ -33,6 +33,13 @@ Based on:
 
 ## Instalation
 
+0. Clone repository
+
+```bash
+git clone https://github.com/PUT-Motorsport/PUTM_DV_Simulator_2020.git
+cd PUTM_DV_Simulator_2020
+```
+
 1. Build docker image (on testing machine build time is 13m9,531s)
 
 ```bash
