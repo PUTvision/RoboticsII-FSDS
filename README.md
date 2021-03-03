@@ -75,6 +75,14 @@ docker run \
     putm-fsds
 ```
 
+## User and password
+
+* 
+
+### The password for sudo user privileges is `ue4`.  
+
+* 
+
 ## Tips and usage
 
 * tips:

@@ -98,3 +98,7 @@ RUN wget "https://github.com/FS-Driverless/Formula-Student-Driverless-Simulator/
 	unzip fsds-v2.0.0-linux.zip && \
 	mv fsds-v2.0.0-linux/* . && \
 	rm fsds-v2.0.0-linux.zip
+
+USER root
+RUN echo "ue4:ue4" | chpasswd
+USER ue4
