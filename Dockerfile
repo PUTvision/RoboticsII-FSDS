@@ -7,9 +7,6 @@ RUN apt-get update \
   && apt-get install -y sudo \
   && rm -rf /var/lib/apt/lists/*
 
-# Allow the ue4 user to use sudo without a password
-RUN passwd -d ue4 && usermod -aG sudo ue4
-
 # set time zone
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -45,6 +42,10 @@ RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
 RUN pip3 install matplotlib
+RUN pip3 install jupyter
+
+# Allow the ue4 user to use sudo without a password
+RUN passwd -d ue4 && usermod -aG sudo ue4
 
 # create not-sudo account
 USER ue4
