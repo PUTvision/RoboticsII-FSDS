@@ -34,15 +34,14 @@ RUN apt-get install -y --no-install-recommends \
 
 # install missing tool
 RUN apt-get update
-RUN apt-get install -y lsb-release
+RUN apt-get install -y lsb-release python3-tk
 
 # install python libs
 RUN pip3 install setuptools wheel
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
-RUN pip3 install matplotlib
-RUN pip3 install jupyter
+RUN pip3 install matplotlib jupyter rospkg pyyaml
 
 # Allow the ue4 user to use sudo without a password
 RUN passwd -d ue4 && usermod -aG sudo ue4
