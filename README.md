@@ -92,9 +92,9 @@ docker run \
     `docker exec -it <CONTAINER ID> bash`
 * usage:
     - start simulation (required):  
-        `./FSDS.sh`  
+        `./FSDS.sh -nosound`  
         ![sim](imgs/sim.png)
-    - start bridge between FSDS and ROS (required):  
+    - start bridge between FSDS and ROS (required, but this activates the autonomous state and disables keyboard control):  
         `roslaunch fsds_ros_bridge fsds_ros_bridge.launch`  
         ![sim](imgs/bridge.png)
     - start rviz with cameras and lidar:  
