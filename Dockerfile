@@ -41,7 +41,7 @@ RUN pip3 install setuptools wheel
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
-RUN pip3 install matplotlib jupyter rospkg pyyaml
+RUN pip3 install matplotlib jupyter rospkg pyyaml pyquaternion
 
 # Allow the ue4 user to use sudo without a password
 RUN passwd -d ue4 && usermod -aG sudo ue4
