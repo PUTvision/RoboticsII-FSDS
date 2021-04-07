@@ -41,8 +41,8 @@ RUN pip3 install setuptools wheel
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
-RUN pip3 install matplotlib jupyter rospkg pyyaml pyquaternion scipy
-RUN pip3 install tensorflow==2.4.0
+RUN pip3 install --quiet matplotlib jupyter rospkg pyyaml pyquaternion scipy
+RUN pip3 install --quiet tensorflow==2.4.0
 
 # Allow the ue4 user to use sudo without a password
 RUN passwd -d ue4 && usermod -aG sudo ue4
@@ -62,6 +62,7 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 		ros-melodic-joy \
 		ros-melodic-cv-bridge \
 		ros-melodic-image-transport \
+		ros-melodic-ros-numpy \
 		libyaml-cpp-dev \
 		libcurl4-openssl-dev
 
@@ -81,8 +82,13 @@ RUN cd AirSim && \
     ./setup.sh && \
     ./build.sh
 
+# clone race evaluator
 RUN cd ros/src && \
 	git clone https://github.com/bartoszptak/ros-driving-track-evaluator.git -b sim/fsds
+
+# clone Formula Student Driverless and Autonomous Vehicle project repository
+RUN cd ros/src && \
+	git clone https://github.com/MatPiech/Autonomous_Cars_FSDS_project.git fsds_utils/
 
 # build ROS bridge
 RUN cd ros && \
@@ -107,9 +113,3 @@ RUN wget "https://github.com/FS-Driverless/Formula-Student-Driverless-Simulator/
 USER root
 RUN echo "ue4:ue4" | chpasswd
 USER ue4
-
-# add and build FSDS utils for AV laboratory
-RUN cd ros/src && \
-	git clone https://github.com/MatPiech/Autonomous_Cars_FSDS_project.git fsds_utils/
-RUN cd ros && \
-	catkin build
