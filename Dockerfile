@@ -42,6 +42,7 @@ RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
 RUN pip3 install matplotlib jupyter rospkg pyyaml
+RUN pip3 install tensorflow==2.4.0
 
 # Allow the ue4 user to use sudo without a password
 RUN passwd -d ue4 && usermod -aG sudo ue4
@@ -101,3 +102,9 @@ RUN wget "https://github.com/FS-Driverless/Formula-Student-Driverless-Simulator/
 USER root
 RUN echo "ue4:ue4" | chpasswd
 USER ue4
+
+# add and build FSDS utils for AV laboratory
+RUN cd ros/src && \
+	git clone https://github.com/MatPiech/Autonomous_Cars_FSDS_project.git fsds_utils/
+RUN cd ros && \
+	catkin build
