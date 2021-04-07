@@ -41,7 +41,7 @@ RUN pip3 install setuptools wheel
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
-RUN pip3 install matplotlib jupyter rospkg pyyaml
+RUN pip3 install matplotlib jupyter rospkg pyyaml pyquaternion scipy
 RUN pip3 install tensorflow==2.4.0
 
 # Allow the ue4 user to use sudo without a password
@@ -81,10 +81,15 @@ RUN cd AirSim && \
     ./setup.sh && \
     ./build.sh
 
+RUN cd ros/src && \
+	git clone https://github.com/bartoszptak/ros-driving-track-evaluator.git -b sim/fsds
+
 # build ROS bridge
 RUN cd ros && \
 	catkin config --extend /opt/ros/melodic  && \	
     catkin init && \
+	LINE=`sed -n '/.publish(go_signal_msg)/=' ./src/fsds_ros_bridge/src/airsim_ros_wrapper.cpp` && \
+	sed -i "$LINE"' s/^/\/\//' ./src/fsds_ros_bridge/src/airsim_ros_wrapper.cpp && \
     catkin build
 
 # add FSDS env to startup
