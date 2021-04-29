@@ -32,17 +32,15 @@ RUN apt-get install -y --no-install-recommends \
 	vim \ 
 	nano
 
+ENV PATH="/home/ue4/miniconda3/bin:${PATH}"
+ARG PATH="/home/ue4/miniconda3/bin:${PATH}"
+RUN apt-get update
+
+RUN apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
 # install missing tool
 RUN apt-get update
 RUN apt-get install -y lsb-release python3-tk
-
-# install python libs
-RUN pip3 install setuptools wheel
-RUN python3 -m pip install --upgrade pip
-RUN pip3 install scikit-build
-RUN pip3 install airsim
-RUN pip3 install --quiet matplotlib jupyter rospkg pyyaml pyquaternion scipy
-RUN pip3 install --quiet tensorflow==2.4.0
 
 # Allow the ue4 user to use sudo without a password
 RUN passwd -d ue4 && usermod -aG sudo ue4
@@ -50,6 +48,20 @@ RUN passwd -d ue4 && usermod -aG sudo ue4
 # create not-sudo account
 USER ue4
 WORKDIR /home/ue4
+
+RUN wget \
+    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && mkdir /home/ue4/.conda \
+    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+    && rm -f Miniconda3-latest-Linux-x86_64.sh 
+
+# install python libs
+RUN pip3 install setuptools wheel
+RUN python3 -m pip install --upgrade pip
+RUN pip3 install scikit-build
+RUN pip3 install airsim
+RUN pip3 install --quiet matplotlib jupyter rospkg pyyaml pyquaternion scipy 
+RUN conda install -c anaconda tensorflow-gpu==2.4.1 -y
 
 # install ros melodic and requirements
 RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
