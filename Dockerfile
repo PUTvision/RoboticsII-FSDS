@@ -88,6 +88,8 @@ WORKDIR /home/ue4/Formula-Student-Driverless-Simulator
 
 ADD ./settings.json settings.json
 ADD ./default.rviz ros/src/fsds_ros_bridge/rviz/default.rviz
+ADD ./cameralauncher.py ros/src/fsds_ros_bridge/scripts/cameralauncher.py
+ADD ./fsds_ros_bridge_camera.cpp ros/src/fsds_ros_bridge/src/fsds_ros_bridge_camera.cpp
 
 # build FSDS
 RUN cd AirSim && \
