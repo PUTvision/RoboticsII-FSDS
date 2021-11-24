@@ -61,7 +61,8 @@ RUN python3 -m pip install --upgrade pip
 RUN pip3 install scikit-build
 RUN pip3 install airsim
 RUN pip3 install --quiet matplotlib jupyter rospkg pyyaml pyquaternion scipy 
-RUN conda install -c anaconda tensorflow-gpu==2.4.1 -y
+RUN conda install -c anaconda cudnn -y
+RUN pip3 install tensorflow
 
 # install ros melodic and requirements
 RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
