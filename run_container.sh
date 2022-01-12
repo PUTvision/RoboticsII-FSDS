@@ -9,4 +9,5 @@ docker run \
     --env="NVIDIA_VISIBLE_DEVICES=all" \
     --env="NVIDIA_DRIVER_CAPABILITIES=all" \
     --network=host \
+    --name=putm-fsds \
     putm-fsds

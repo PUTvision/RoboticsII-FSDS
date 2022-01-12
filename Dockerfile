@@ -83,7 +83,7 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 
 # get FSDS
-RUN git clone https://github.com/FS-Driverless/Formula-Student-Driverless-Simulator.git --recurse-submodules
+RUN git clone https://github.com/FS-Driverless/Formula-Student-Driverless-Simulator.git -b v2.0.0 --recurse-submodules
 
 WORKDIR /home/ue4/Formula-Student-Driverless-Simulator
 
