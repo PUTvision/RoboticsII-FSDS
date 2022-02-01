@@ -1,4 +1,4 @@
-# PUTM_DV_Simulator_2020
+# PUT-Vision Robotics II - FSDS
 Repository for Formula Student Driverless Simulator docker image.  
 Based on:
 - [Formula-Student-Driverless-Simulator](https://fs-driverless.github.io/Formula-Student-Driverless-Simulator/latest/getting-started/)
