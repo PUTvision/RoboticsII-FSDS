@@ -60,7 +60,7 @@ chmod +x xauth.sh
 ```bash
 docker run \
     -it --gpus all --privileged \
-    --env="DISPLAY=:1" \
+    --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --env="XAUTHORITY=$XAUTH" \
@@ -72,7 +72,7 @@ docker run \
     fsds
 ```
 
-It is also possible using [run_container.sh](../..//docker/run_container.sh) script.
+It is also possible using [run_container.sh](./run_container.sh) script.
 
 4. Get into the container from other terminal
 
@@ -80,36 +80,4 @@ It is also possible using [run_container.sh](../..//docker/run_container.sh) scr
 docker exec -it <CONTAINER ID> bash
 ```
 
-It is also possible using [exec_to_container.sh](../..//docker/exec_to_container.sh) script.
-
-
-## Troubleshooting
-
-* DISPLAY ID
-    ```
-    signal 11 caught.
-    Malloc Size=65538 LargeMemoryPoolOffset=65554 
-    CommonUnixCrashHandler: Signal=11
-    Failed to find symbol file, expected location:
-    "/home/ue4/Formula-Student-Driverless-Simulator/FSOnline/Binaries/Linux/Blocks.sym"
-    [2021.02.19-13.33.47:014][  0]LogCore: === Critical error: ===
-    Unhandled Exception: SIGSEGV: invalid attempt to read memory at address 0x0000000000000000
-
-    [2021.02.19-13.33.47:014][  0]LogCore: Fatal error!
-
-    0x0000000003a2a312 Blocks!UnknownFunction(0x382a312)
-    0x00000000036c2c11 Blocks!UnknownFunction(0x34c2c10)
-    0x0000000003a2623e Blocks!UnknownFunction(0x382623d)
-    0x00000000074b26d6 Blocks!UnknownFunction(0x72b26d5)
-    0x0000000003a2a18f Blocks!UnknownFunction(0x382a18e)
-    0x00007f95928a8980 libpthread.so.0!UnknownFunction(0x1297f)
-
-    [2021.02.19-13.33.47:019][  0]LogExit: Executing StaticShutdownAfterError
-    Malloc Size=131160 LargeMemoryPoolOffset=196744 
-    Malloc Size=131160 LargeMemoryPoolOffset=327928 
-    Malloc Size=131160 LargeMemoryPoolOffset=459112 
-    Malloc Size=44522 LargeMemoryPoolOffset=503658 
-    Engine crash handling finished; re-raising signal 11 for the default handler. Good bye.
-    Segmentation fault (core dumped)
-    ```
-    Check other parameter numbers like: `--env="DISPLAY=:0"`
+It is also possible using [exec_to_container.sh](./exec_to_container.sh) script.

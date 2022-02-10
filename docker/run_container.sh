@@ -1,6 +1,6 @@
 docker run \
     -it --gpus all --privileged \
-    --env="DISPLAY=:1" \
+    --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --env="XAUTHORITY=$XAUTH" \
@@ -9,5 +9,4 @@ docker run \
     --env="NVIDIA_DRIVER_CAPABILITIES=all" \
     --network=host \
     --name=robotisc2-fsds \
-    --rm \
     fsds
