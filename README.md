@@ -11,5 +11,5 @@
 The fsds_roboticsII package should be cloned to the `Formula-Student-Driverless-Simulator/ros/src/` directory and named `fsds_roboticsII`. It can be done with command:
 
 ```bash
-git clone https://github.com/PUTvision/RoboticsII-FSDS.git -b ros Formula-Student-Driverless-Simulator/ros/src/fsds_roboticsII/
+git clone git@github.com:PUTvision/RoboticsII-FSDS.git -b ros Formula-Student-Driverless-Simulator/ros/src/fsds_roboticsII/
 ```

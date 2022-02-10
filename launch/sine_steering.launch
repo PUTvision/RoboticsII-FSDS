@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="fsds_roboticsII" type="sine_steering.py" name="sine_steering" required="true" output="screen" />
+</launch>
