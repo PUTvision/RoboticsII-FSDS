@@ -92,8 +92,8 @@ void doStereoImageUpdate(const ros::TimerEvent&)
     // cam1 - right camera
     // cam2 - left camera
     std::vector<ImageRequest> reqs = {
-        ImageRequest("cam2", ImageType::Scene, false, false), 
-        ImageRequest("cam1", ImageType::Scene, false, false)
+        ImageRequest("cam_left", ImageType::Scene, false, false), 
+        ImageRequest("cam_right", ImageType::Scene, false, false)
     };
 
     auto img_responses = getImage(reqs);
@@ -113,7 +113,7 @@ void doStereoImageUpdate(const ros::TimerEvent&)
     right_img_msg->encoding = "bgr8";
     right_img_msg->is_bigendian = 0;
     right_img_msg->header.stamp = make_ts(right_img_response.time_stamp);
-    right_img_msg->header.frame_id = "/fsds/camera/cam1";
+    right_img_msg->header.frame_id = "/fsds/camera/cam_right";
 
     sensor_msgs::ImagePtr left_img_msg = boost::make_shared<sensor_msgs::Image>();
 
@@ -124,7 +124,7 @@ void doStereoImageUpdate(const ros::TimerEvent&)
     left_img_msg->encoding = "bgr8";
     left_img_msg->is_bigendian = 0;
     left_img_msg->header.stamp = make_ts(left_img_response.time_stamp);
-    left_img_msg->header.frame_id = "/fsds/camera/cam2";
+    left_img_msg->header.frame_id = "/fsds/camera/cam_left";
 
     stereo_left_image_pub.publish(left_img_msg);
     stereo_right_image_pub.publish(right_img_msg);
@@ -236,8 +236,8 @@ int main(int argc, char ** argv)
     // ready topic
     if (stereocamera)
     {
-        stereo_left_image_pub = nh.advertise<sensor_msgs::Image>("/fsds/camera/cam2", 1);
-        stereo_right_image_pub = nh.advertise<sensor_msgs::Image>("/fsds/camera/cam1", 1);
+        stereo_left_image_pub = nh.advertise<sensor_msgs::Image>("/fsds/camera/cam_left", 1);
+        stereo_right_image_pub = nh.advertise<sensor_msgs::Image>("/fsds/camera/cam_right", 1);
     }
     else
     {

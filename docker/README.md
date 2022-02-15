@@ -45,7 +45,7 @@ git clone https://github.com/PUTvision/RoboticsII-FSDS.git
 1. Build docker image from [docker](../../docker) directory
 
 ```bash
-docker build -t fsds --network=host -f Dockerfile 
+docker build -t fsds --network=host -f Dockerfile .
 ```
 
 2. Add docker access to nvidia (it's require sudo privileges to execute)
