@@ -39,9 +39,9 @@ launch.start()
 
 for cameraname in settings['Vehicles']['FSCar']['Cameras']:
     is_stereo = False
-    if cameraname == 'cam1':
+    if cameraname == 'cam_right':
       continue
-    elif cameraname == 'cam2':
+    elif cameraname == 'cam_left':
       is_stereo = True
 
     camsettings = settings['Vehicles']['FSCar']['Cameras'][cameraname]
