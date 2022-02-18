@@ -106,7 +106,8 @@ RUN cd Formula-Student-Driverless-Simulator/AirSim && \
 
 # clone race evaluator
 RUN cd Formula-Student-Driverless-Simulator/ros/src && \
-	git clone https://github.com/bartoszptak/ros-driving-track-evaluator.git -b sim/fsds --quiet
+	git clone https://github.com/bartoszptak/ros-driving-track-evaluator.git -b sim/fsds --quiet && \
+	git clone https://github.com/PUTvision/RoboticsII-FSDS.git -b ros --quiet
 
 # build ROS bridge
 RUN cd Formula-Student-Driverless-Simulator/ros && \
