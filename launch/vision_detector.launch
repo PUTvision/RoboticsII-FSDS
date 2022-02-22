@@ -1,0 +1,13 @@
+<launch>
+    <!-- load configuration file -->
+    <rosparam command="load" file="$(find fsds_roboticsII)/config/config.yaml" />
+
+    <!-- Vision cones detector -->
+    <node pkg="fsds_roboticsII" type="vision_detector.py" name="cones_detection_vision" required="true" output="screen" />
+
+    <!-- simple steering -->
+    <!-- <node pkg="fsds_roboticsII" type="simple_steering.py" name="simple_steering" required="true" output="screen" /> -->
+
+    <!-- rviz visualization -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fsds_roboticsII)/rviz/vision_cones_detection_config.rviz" output="screen" />
+</launch>
