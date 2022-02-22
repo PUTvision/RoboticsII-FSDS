@@ -1,8 +1,8 @@
 # Autonomous system constatns
 vehicle:
   max_throttle: 0.4 # m/s^2
-  target_speed: 2 # m/s
-  max_steering: 0.2
+  target_speed: 8 # m/s
+  max_steering: 0.3
 
 cones_range_cutoff: 12.0 # max distance to cone
 
