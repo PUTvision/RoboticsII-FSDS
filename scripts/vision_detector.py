@@ -130,7 +130,7 @@ class VisionDetector:
 
 
 if __name__ == '__main__':
-    rp.init_node('lidar', log_level=rp.DEBUG)
+    rp.init_node('vision', log_level=rp.DEBUG)
 
     vision_conf = rp.get_param('vision')
 
