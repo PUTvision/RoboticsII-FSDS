@@ -9,7 +9,7 @@ Camera.type: "PinHole"
 Camera.fx: <FX>
 Camera.fy: <FX>
 Camera.cx: <CX>
-Camera.cy: <CX>
+Camera.cy: <CY>
 
 Camera.k1: 0.0
 Camera.k2: 0.0
@@ -48,7 +48,7 @@ LEFT.K: !!opencv-matrix
    rows: 3
    cols: 3
    dt: d
-   data: [<FX>, 0.0, <CX>, 0.0, <FX>, <CX>, 0.0, 0.0, 1.0]
+   data: [<FX>, 0.0, <CX>, 0.0, <FX>, <CY>, 0.0, 0.0, 1.0]
 LEFT.R:  !!opencv-matrix
    rows: 3
    cols: 3
@@ -58,7 +58,7 @@ LEFT.P:  !!opencv-matrix
    rows: 3
    cols: 4
    dt: d
-   data: [<FX>, 0, <CX>, 0,  0, <FX>, <CX>, 0,  0, 0, 1, 0]
+   data: [<FX>, 0, <CX>, 0,  0, <FX>, <CY>, 0,  0, 0, 1, 0]
 
 RIGHT.height: <HEIGHT>
 RIGHT.width: <WIDTH>
@@ -71,7 +71,7 @@ RIGHT.K: !!opencv-matrix
    rows: 3
    cols: 3
    dt: d
-   data: [<FX>, 0.0, <CX>, 0.0, <FX>, <CX>, 0.0, 0.0, 1.0]
+   data: [<FX>, 0.0, <CX>, 0.0, <FX>, <CY>, 0.0, 0.0, 1.0]
 RIGHT.R:  !!opencv-matrix
    rows: 3
    cols: 3
@@ -81,7 +81,7 @@ RIGHT.P:  !!opencv-matrix
    rows: 3
    cols: 4
    dt: d
-   data: [<FX>, 0, <CX>, -<BF>, 0, <FX>, <CX>, 0, 0, 0, 1, 0]
+   data: [<FX>, 0, <CX>, -<BF>, 0, <FX>, <CY>, 0, 0, 0, 1, 0]
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
