@@ -70,9 +70,10 @@ class VisionDetector:
         if len(boxes)>0:
             # change (x1,y1,x2,y2) to (x,y,w,h)
             boxes[:,[2,3]] = boxes[:,[2,3]] - boxes[:,[0,1]]
-
-            # throw out small detection
+            # filter out small detection
             boxes = boxes[boxes[:,2]*boxes[:,3]>self.cone_too_small_thresh]
+            
+            # generate Points from boxes 
             pose_array.poses = self.postprocess_cones(boxes)
 
         self.cones_position_publisher.publish(pose_array)
