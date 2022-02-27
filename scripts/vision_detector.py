@@ -42,8 +42,9 @@ class YOLOOnnxDetector:
 
 
 class VisionDetector:
-    def __init__(self, model_path, cone_too_small_thresh, conf_thres, iou_thres):
+    def __init__(self, model_path, cone_too_small_thresh, conf_thres, iou_thres, cone_clf_path):
         self.model_path = model_path
+        self.cone_clf_path = cone_clf_path
 
         self.detector = YOLOOnnxDetector(model_path=self.model_path, conf_thres=conf_thres, iou_thres=iou_thres)
         self.cone_too_small_thresh = cone_too_small_thresh
@@ -73,14 +74,14 @@ class VisionDetector:
             # filter out small detection
             boxes = boxes[boxes[:,2]*boxes[:,3]>self.cone_too_small_thresh]
             
+
             # generate Points from boxes 
             pose_array.poses = self.postprocess_cones(boxes)
 
         self.cones_position_publisher.publish(pose_array)
         
         # TODO: Implement boxes visualisation on the im array
-                
-                
+        
         self.publish_inferenced_img(im)
 
     def postprocess_cones(self, bboxes: np.ndarray) -> List[Pose]:

@@ -12,3 +12,4 @@ vision:
   model_path: 
   conf_thres: 0.7
   iou_thres: 0.5
+  cone_clf_path: /cone_clf.onnx
