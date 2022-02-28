@@ -1,3 +1,10 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]] ; then
+    echo "Container name (student ID) not passed!"
+    exit 1
+fi
+
 docker run \
     -it --gpus all --privileged \
     --env="DISPLAY=$DISPLAY" \
@@ -9,5 +16,5 @@ docker run \
     --env="NVIDIA_VISIBLE_DEVICES=all" \
     --env="NVIDIA_DRIVER_CAPABILITIES=all" \
     --network=host \
-    --name=robotisc2-fsds \
+    --name=$1 \
     fsds

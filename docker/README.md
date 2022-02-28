@@ -69,11 +69,14 @@ docker run \
     --env="NVIDIA_VISIBLE_DEVICES=all" \
     --env="NVIDIA_DRIVER_CAPABILITIES=all" \
     --network=host \
-    --name=robotisc2-fsds \
+    --name=<STUDENT ID> \
     fsds
 ```
 
-It is also possible using [run_container.sh](./run_container.sh) script.
+It is also possible using [run_container.sh](./run_container.sh) script:
+```console
+./run_container.sh <STUDENT ID>
+```
 
 4. Get into the container from other terminal
 
