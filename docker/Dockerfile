@@ -62,7 +62,7 @@ RUN pip3 install --quiet scikit-build
 RUN pip3 install --quiet airsim
 
 RUN pip3 install --quiet onnxruntime
-RUN pip3 install --quiet torch==1.10.2+cpu torchvision==0.11.3+cpu torchaudio==0.10.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+RUN pip3 install --quiet torch==1.10.2+cpu torchvision==0.11.3+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 
 # install ros noetic and requirements
 RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
@@ -76,8 +76,12 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 		ros-noetic-cv-bridge \
 		ros-noetic-image-transport \
 		ros-noetic-ros-numpy \
+		ros-noetic-robot-localization \
+		ros-noetic-pointcloud-to-laserscan \
+		ros-noetic-gmapping \
 		libyaml-cpp-dev \
-		libcurl4-openssl-dev
+		libcurl4-openssl-dev \
+		python3-pcl
 
 RUN adduser --force-badname --disabled-password --gecos '' --shell /bin/bash fsdssim_user && \ 
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \ 
