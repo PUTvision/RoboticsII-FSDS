@@ -79,6 +79,7 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 		ros-noetic-robot-localization \
 		ros-noetic-pointcloud-to-laserscan \
 		ros-noetic-gmapping \
+		ros-noetic-vision-msgs \
 		libyaml-cpp-dev \
 		libcurl4-openssl-dev \
 		python3-pcl
