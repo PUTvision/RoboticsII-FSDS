@@ -77,8 +77,10 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 		ros-noetic-image-transport \
 		ros-noetic-ros-numpy \
 		ros-noetic-robot-localization \
-		ros-noetic-pointcloud-to-laserscan \
-		ros-noetic-gmapping \
+		ros-noetic-geodesy \
+		ros-noetic-pcl-ros \
+		ros-noetic-nmea-msgs \
+		ros-noetic-libg2o \
 		libyaml-cpp-dev \
 		libcurl4-openssl-dev \
 		python3-pcl
@@ -114,7 +116,10 @@ RUN cd Formula-Student-Driverless-Simulator/AirSim && \
 # clone race evaluator
 RUN cd Formula-Student-Driverless-Simulator/ros/src && \
 	git clone https://github.com/bartoszptak/ros-driving-track-evaluator.git -b sim/fsds --quiet && \
-	git clone https://github.com/PUTvision/RoboticsII-FSDS.git -b ros --quiet
+	git clone https://github.com/PUTvision/RoboticsII-FSDS.git -b ros --quiet && \
+	git clone https://github.com/koide3/ndt_omp.git --quiet && \
+	git clone https://github.com/SMRT-AIST/fast_gicp.git --recursive --quiet && \
+	git clone https://github.com/koide3/hdl_graph_slam --quiet
 
 # build ROS bridge
 RUN cd Formula-Student-Driverless-Simulator/ros && \
