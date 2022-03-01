@@ -77,6 +77,7 @@ RUN sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) 
 		ros-noetic-image-transport \
 		ros-noetic-ros-numpy \
 		ros-noetic-robot-localization \
+		ros-noetic-vision-msgs \
 		ros-noetic-geodesy \
 		ros-noetic-pcl-ros \
 		ros-noetic-nmea-msgs \
