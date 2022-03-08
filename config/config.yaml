@@ -9,7 +9,7 @@ cones_range_cutoff: 12.0 # max distance to cone
 # Vision params
 vision:
   cone_too_small_thresh: 240
-  model_path: 
+  model_path: /detector.onnx
   conf_thres: 0.7
   iou_thres: 0.5
   cone_clf_path: /cone_clf.onnx
