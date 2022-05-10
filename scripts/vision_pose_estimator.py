@@ -58,13 +58,12 @@ class VisionPoseEstimator:
     def estimate_cones_poses(self, box, depth):
         pose = Pose()
 
-        # TODO: get the value of depth in the centre of the box
         d = depth[int(box.bbox.center.y), int(box.bbox.center.x)]
 
         ratio = (-1)*(box.bbox.center.x-608//2)
 
         pose.position.x = d
-        pose.position.y = d*dy/box.bbox.center.y
+        pose.position.y = d*ratio/box.bbox.center.y
         pose.position.z = 0.3
 
         pose.orientation.x = 0.707
