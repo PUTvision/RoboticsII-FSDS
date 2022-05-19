@@ -6,7 +6,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 # set time zone
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt update
+RUN rm /etc/apt/sources.list.d/cuda.list
+RUN apt-key del 7fa2af80
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
+	dpkg -i cuda-keyring_1.0-1_all.deb
+RUN apt-get update
 RUN apt install -y tzdata
 
 # update libraries
