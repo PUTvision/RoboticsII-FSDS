@@ -61,11 +61,11 @@ RUN VULKAN_API_VERSION=`dpkg -s libvulkan1 | grep -oP 'Version: [0-9|\.]+' | gre
 
 # install python libs
 RUN pip3 install setuptools wheel
-RUN pip3 install --quiet numpy rospkg pyyaml pyquaternion scipy msgpack-rpc-python
+RUN pip3 install --quiet numpy==1.18.5 rospkg pyyaml pyquaternion scipy msgpack-rpc-python
 RUN pip3 install --quiet scikit-build
 RUN pip3 install --quiet airsim
 
-RUN pip3 install --quiet onnxruntime
+RUN pip3 install --quiet onnxruntime==1.10.0
 RUN pip3 install --quiet torch==1.10.2+cpu torchvision==0.11.3+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 
 # install ros noetic and requirements
